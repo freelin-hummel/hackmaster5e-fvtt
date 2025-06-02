@@ -40,8 +40,8 @@
         {
             "label": "Documentation",
             "type": "JournalEntry",
-            "name": "hmdocs",
-            "path": "packs/documentation.db",
+            "name": "documentation",
+            "path": "packs/documentation",
             "system": "hackmaster5e"
         },
         {
