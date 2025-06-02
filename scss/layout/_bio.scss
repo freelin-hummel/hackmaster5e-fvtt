@@ -4,6 +4,12 @@
     grid-template-rows: 12em 20em;
     column-gap: $padding-sm;
     row-gap: $padding-md;
+    
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+        gap: $padding-md;
+    }
 }
 
 .beast-bio {
@@ -12,4 +18,10 @@
     grid-template-rows: 12em 10em;
     column-gap: $padding-sm;
     row-gap: $padding-md;
+    
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+        gap: $padding-md;
+    }
 }

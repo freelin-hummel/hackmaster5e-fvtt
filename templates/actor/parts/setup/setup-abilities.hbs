@@ -1,27 +1,28 @@
 <label class='resource-label'>Ability Scores</label>
 {{#with data}}
 <section>
-    <table class='table-basic' style='padding-top: 2px;'>
+    <table class='table-basic setup-abilities'>
         <thead>
             <tr>
                 <th scope='col'></th>
-                {{#each system.abilities.total}}
-                <th scope='col'><label class='loud-label'>{{@key}}</label></th>
+                {{#each abilities.base}}
+                <th scope='col'><label class='loud-label'>{{localize (concat 'HM.ability_short.' @key)}}</label></th>
                 {{/each}}
             </tr>
         </thead>
-        <tbody class='abilities'>
-            {{#each system.abilities as |vector vectorKey|}}
+        <tbody>
+            {{#each abilityVectors}}
             <tr>
-                <td scope='row' style='padding-right: 20px;'><label class='resource-label'>{{@vectorKey}}</label></td>
-                {{#each vector}}
-                <td>
-                    <input type='text' name='system.abilities.{{@vectorKey}}.{{@key}}.value' style='text-align: right;'
-                        value='{{lookup (lookup @vector @key) 'value'}}' maxlength=3 data-dtype='Number'
+                <th scope='row' data-label=""><label class='resource-label'>{{localize (concat 'HM.atype.' @key)}}</label></th>
+                {{#each ../abilities.base}}
+                <td data-label="{{localize (concat 'HM.ability_short.' @key)}}">
+                    <input type='text' name='system.abilities.{{@vectorKey}}.{{@key}}.value'
+                        value='{{pad (lookup (lookup @vector @key) 'value')}}' maxlength=3 data-dtype='Number'
                         {{#unless (or (eq @vectorKey 'base') (eq @vectorKey 'misc'))}}disabled{{/unless}}/>
-                    <label class='loud-label'>/</label>
+                    <label class='loud-label ability-details'>/</label>
                     <input type='text' name='system.abilities.{{@vectorKey}}.{{@key}}.fvalue'
                         value='{{pad (lookup (lookup @vector @key) 'fvalue')}}' maxlength=3 data-dtype='Number'
+                        class='ability-details'
                         {{#unless (or (eq @vectorKey 'base') (eq @vectorKey 'misc'))}}disabled{{/unless}}/>
                 </td>
                 {{/each}}

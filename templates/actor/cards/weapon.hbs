@@ -86,15 +86,15 @@
                 <tbody>
                     {{#each system.bonus}}
                     <tr>
-                        <td scope='row'><label class='resource-label'>{{@key}}</label></td>
+                        <td scope='row' data-label=""><label class='resource-label'>{{@key}}</label></td>
                         {{#each this}}{{#unless (eq @key 'jspd')}}{{#if (eq @../key 'mod')}}
-                        <td>
+                        <td data-label="{{@key}}" class='mobile-hide-mods'>
                             <input class='editable' type='number' value={{this}}
                                 data-item-prop='system.bonus.mod.{{@key}}'
                                 data-item-id='{{../../weaponId}}' data-dtype='Number' />
                         </td>
                         {{else}}
-                        <td>
+                        <td data-label="{{@key}}">
                             {{#if
                                 (and this ../../system.ranged.checked
                                     (not ../../system.ranged.mechanical)

@@ -7,6 +7,7 @@ export class HMBeastActorSheet extends HMActorSheet {
             classes: ['hackmaster', 'sheet', 'actor'],
             width: 670,
             height: 770,
+            resizable: true,
             scrollY: ['.scrollable'],
             tabs: [
                 { navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'overview'    },

@@ -1,0 +1,217 @@
+// Additional mobile improvements for item sheets and complex layouts
+@media (max-width: 768px) {
+    // Better item sheet layouts
+    .item-form {
+        .grid-2col {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        
+        .sidepanel {
+            border-left: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-left: 0;
+            padding-top: 16px;
+            margin-top: 16px;
+        }
+    }
+    
+    // Simplify weapon/armor sheet attribute tables
+    .attributes .table-basic {
+        &.mobile-stack {
+            th, td {
+                font-size: 13px;
+                padding: 6px 4px;
+            }
+            
+            input {
+                width: 100%;
+                height: 30px;
+                font-size: 13px;
+            }
+        }
+    }
+    
+    // Better proficiency tables
+    .card-expanded .table-basic {
+        tbody tr {
+            th {
+                font-size: 11px;
+                padding: 4px 2px;
+            }
+            
+            td {
+                font-size: 12px;
+                padding: 4px 2px;
+                
+                input {
+                    height: 28px;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+    
+    // Simplify talent tables
+    .talent .table-basic {
+        font-size: 12px;
+        
+        th, td {
+            padding: 4px 2px;
+        }
+        
+        .button {
+            min-height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    
+    // Better class tables
+    .setup-classes .table-basic {
+        font-size: 12px;
+        
+        th, td {
+            padding: 4px 2px;
+        }
+        
+        input {
+            width: 60px;
+            height: 28px;
+            font-size: 12px;
+        }
+    }
+    
+    // Improve spell/prayer tables
+    .spells-table {
+        .table-basic {
+            font-size: 12px;
+            
+            .mobile-hidden {
+                display: none;
+            }
+            
+            th, td {
+                padding: 4px 2px;
+            }
+        }
+    }
+    
+    // Better range tables for weapons
+    .ranged-ranges table {
+        font-size: 11px;
+        
+        th, td {
+            padding: 2px 1px;
+        }
+        
+        input {
+            width: 50px;
+            height: 24px;
+            font-size: 11px;
+        }
+    }
+    
+    // Improve effect tables in talent sheets
+    .effect-talent table {
+        font-size: 11px;
+        
+        th, td {
+            padding: 3px 2px;
+        }
+        
+        input, select {
+            height: 26px;
+            font-size: 11px;
+        }
+        
+        .button {
+            min-width: 30px;
+            min-height: 30px;
+        }
+    }
+    
+    // Better currency display
+    .currency-card {
+        padding: 8px;
+        
+        .form-option {
+            margin-bottom: 6px;
+            
+            label {
+                font-size: 12px;
+            }
+            
+            input {
+                height: 30px;
+                font-size: 13px;
+            }
+        }
+    }
+    
+    // Responsive header logistics
+    .header-logistics {
+        .grid-3col {
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+        
+        .form-data {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            label {
+                flex: 0 0 auto;
+                margin-right: 8px;
+                font-size: 12px;
+            }
+            
+            input {
+                flex: 1;
+                height: 30px;
+                font-size: 13px;
+            }
+        }
+    }
+    
+    // Better sheet navigation
+    .sheet-tabs {
+        flex-wrap: wrap;
+        gap: 4px;
+        
+        .item {
+            flex: 1;
+            min-width: 80px;
+            text-align: center;
+            font-size: 12px;
+            padding: 8px 4px;
+        }
+    }
+    
+    // Improve overview grids
+    .overview-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    // Better biography/description areas
+    .description-area {
+        textarea {
+            min-height: 120px;
+            font-size: 14px;
+        }
+    }
+    
+    // Responsive container controls
+    .container-controls {
+        flex-direction: column;
+        gap: 8px;
+        
+        select {
+            width: 100%;
+            height: 32px;
+        }
+    }
+}

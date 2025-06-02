@@ -21,6 +21,7 @@ export class HMCharacterActorSheet extends HMActorSheet {
             classes: ['hackmaster', 'sheet', 'actor'],
             width: 835,
             height: 930,
+            resizable: true,
             scrollY: ['.scrollable'],
             tabs: [
                 { navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'skills' },

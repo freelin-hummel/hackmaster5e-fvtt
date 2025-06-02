@@ -4,10 +4,23 @@
     padding: 0;
     overflow-y: auto;
 
+    @media (max-width: 768px) {
+        overflow-x: hidden;
+    }
+
     .card-controls {
         text-align: right;
         margin-right: 2px;
         margin-left: 2px;
+        
+        @media (max-width: 768px) {
+            margin: 4px;
+            
+            a {
+                padding: 8px;
+                margin: 2px;
+            }
+        }
     }
 
     .table-header {
@@ -18,7 +31,21 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        select { height: 20px; }
+        
+        @media (max-width: 768px) {
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        select { 
+            height: 20px;
+            
+            @media (max-width: 768px) {
+                height: 32px;
+                min-height: 32px;
+                font-size: 16px;
+            }
+        }
     }
 }
 
@@ -31,9 +58,26 @@
     overflow: visible;
     margin: 3px;
 
+    @media (max-width: 768px) {
+        margin: 6px 3px;
+        border-radius: $card-border-radius;
+    }
+
     &.item {
-        &.character { max-width: calc(#{$character-width} - 6px); }
-        &.beast { max-width: calc(#{$beast-width} - 6px); }
+        &.character { 
+            max-width: calc(#{$character-width} - 6px);
+            
+            @media (max-width: 768px) {
+                max-width: 100%;
+            }
+        }
+        &.beast { 
+            max-width: calc(#{$beast-width} - 6px);
+            
+            @media (max-width: 768px) {
+                max-width: 100%;
+            }
+        }
     }
 
     header em { font-style: normal; }
@@ -50,6 +94,11 @@
         margin-top: 2px;
         margin-bottom: -$padding-md;
         margin-right: -$padding-sm;
+        
+        @media (max-width: 768px) {
+            padding: 0 0 $padding-sm $padding-sm;
+            margin-right: 0;
+        }
     }
 
     @include table-basic;
@@ -58,10 +107,21 @@
         margin-top: 1px;
         width: 2em;
         margin-right: 2px;
+        
+        @media (max-width: 768px) {
+            min-width: 2em;
+            min-height: 32px;
+            font-size: 16px;
+            padding: 4px;
+        }
     }
 
     > section {
         padding: 5px;
+
+        @media (max-width: 768px) {
+            padding: 8px;
+        }
 
         input[type=number] {
             background: transparent;
@@ -70,6 +130,13 @@
             margin: 0;
             height: 16px;
             text-align: right;
+            
+            @media (max-width: 768px) {
+                height: 32px;
+                min-height: 32px;
+                font-size: 16px;
+                padding: 4px;
+            }
         }
 
         input[type=text] {
@@ -77,12 +144,23 @@
             padding: 0;
             margin: 0;
             text-align: right;
+            
+            @media (max-width: 768px) {
+                min-height: 32px;
+                font-size: 16px;
+                padding: 4px;
+            }
         }
     }
 
     summary { 
         display: flex;
         justify-content: space-between;
+        
+        @media (max-width: 768px) {
+            flex-wrap: wrap;
+            gap: 8px;
+        }
 
         > section {
             display: flex;
@@ -92,11 +170,22 @@
             flex: 0 1 auto;
             border: 0;
             padding: 0;
+            
+            @media (max-width: 768px) {
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+            
             &.weapon-controls {
                 img {
                     max-height: 36px;
                     margin-left: 2px;
                     margin-right: 5px;
+                    
+                    @media (max-width: 768px) {
+                        max-height: 44px;
+                        margin: 4px;
+                    }
                 }
             }   
             &.spell-controls {
@@ -104,6 +193,11 @@
                     max-height: 20px;
                     margin-left: 2px;
                     margin-right: 2px;
+                    
+                    @media (max-width: 768px) {
+                        max-height: 32px;
+                        margin: 4px;
+                    }
                 }
             }
         }
@@ -116,6 +210,10 @@
         margin-right: $padding-md;
         min-width: 0;
 
+        @media (max-width: 768px) {
+            margin-right: $padding-sm;
+        }
+
         h4 {
             white-space: nowrap;
             overflow: hidden;
@@ -123,6 +221,15 @@
             padding-left: 2px;
             margin-top: 1px;
             margin-bottom: -1px;
+            
+            @media (max-width: 768px) {
+                white-space: normal;
+                overflow: visible;
+                font-size: 1rem;
+                line-height: 1.2;
+                padding: 4px;
+                margin: 0;
+            }
         }
 
         img {
@@ -130,6 +237,11 @@
             align-self: flex-start;
             display: block;
             @include card-border-left($card-border-radius);
+            
+            @media (max-width: 768px) {
+                width: 36px;
+                height: 36px;
+            }
         }
 
         label {
@@ -137,11 +249,25 @@
             align-items: center;
             flex-direction: row;
 
+            @media (max-width: 768px) {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
             .spell-level {
                 flex: 0 0 28px;
                 justify-content: center;
                 height: 100%;
                 border-right: $card_border solid $c-grey;
+                
+                @media (max-width: 768px) {
+                    flex: 0 0 36px;
+                    border-right: none;
+                    border-bottom: $card_border solid $c-grey;
+                    min-height: 32px;
+                    display: flex;
+                    align-items: center;
+                }
             }
         }
     }
@@ -151,9 +277,19 @@
         grid-template-columns: 1fr auto auto;
         column-gap: $padding-sm;
 
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto auto;
+            row-gap: $padding-sm;
+        }
+
         .reach, 
         .secondary-controls {
             padding-top: $padding-sm;
+            
+            @media (max-width: 768px) {
+                padding-top: 0;
+            }
         }
 
         .secondary-controls {
@@ -165,6 +301,16 @@
             border-right: $vert-break;
             padding-right: $padding-sm;
             column-gap: $padding-sm;
+            
+            @media (max-width: 768px) {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                border-right: none;
+                border-bottom: $vert-break;
+                padding-right: 0;
+                padding-bottom: $padding-sm;
+                gap: $padding-sm;
+            }
         }
     }
 
@@ -175,9 +321,31 @@
         justify-items: end;
         gap: 1em;
 
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr auto;
+            grid-template-rows: repeat(3, auto);
+            gap: 8px;
+            margin-right: 0;
+            justify-items: start;
+            
+            > *:nth-child(1) { grid-column: 1 / -1; }
+            > *:nth-child(2) { grid-column: 1; grid-row: 2; }
+            > *:nth-child(3) { grid-column: 2; grid-row: 2; }
+            > *:nth-child(4) { grid-column: 1; grid-row: 3; }
+            > *:nth-child(5) { grid-column: 2; grid-row: 3; }
+            > *:nth-child(6) { grid-column: 1 / -1; grid-row: 4; }
+        }
+
         select {
             width: 8em;
             height: 18px;
+            
+            @media (max-width: 768px) {
+                width: auto;
+                min-width: 6em;
+                height: 32px;
+                font-size: 16px;
+            }
         }
     }
 }
@@ -187,4 +355,11 @@
     margin-right: -$padding-sm;
     display: flex;
     justify-content: space-between;
+    
+    @media (max-width: 768px) {
+        margin-left: 12px;
+        margin-right: 0;
+        flex-direction: column;
+        gap: 8px;
+    }
 }

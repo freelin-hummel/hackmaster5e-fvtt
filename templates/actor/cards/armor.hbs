@@ -36,23 +36,23 @@
                 <tbody>
                     {{#each (mergeObjs system.bonus derived)}}
                     <tr>
-                        <th scope="row"><label class="resource-label">{{@key}}</label></td>
+                        <th scope="row" data-label=""><label class="resource-label">{{@key}}</label></th>
                         {{#each this}}{{#if (eq 'mod' @../key)}}
                             {{#if (eq 'move' @key)}}
-                        <td>
+                        <td data-label="{{@key}}" class='mobile-hide-mods'>
                             <input class="editable" type="text" value={{pct this}} style='width: 2.5rem;'
                                 data-item-prop="system.bonus.mod.{{@key}}"
                                 data-dtype="Percent" />
                         </td>
                             {{else}}
-                        <td>
+                        <td data-label="{{@key}}" class='mobile-hide-mods'>
                             <input class="editable" type="number" value={{this}}
                                 data-item-prop="system.bonus.mod.{{@key}}"
                                 data-dtype="Number" />
                         </td>
                             {{/if}}
                         {{else}}
-                        <td>{{#if (eq 'move' @key)}}{{pct this}}{{else}}{{this}}{{/if}}</td>
+                        <td data-label="{{@key}}">{{#if (eq 'move' @key)}}{{pct this}}{{else}}{{this}}{{/if}}</td>
                         {{/if}}{{/each}}
                     </tr>
                     {{/each}}

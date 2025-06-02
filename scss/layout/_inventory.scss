@@ -3,8 +3,18 @@
     flex-direction: column;
     height: 32rem;
 
+    @media (max-width: 768px) {
+        height: auto;
+        max-height: 60vh;
+    }
+
     &.beast {
         height: 22rem;
+
+        @media (max-width: 768px) {
+            height: auto;
+            max-height: 50vh;
+        }
     }
 
     > header, > footer {
@@ -12,15 +22,31 @@
         display: grid;
         grid-template-columns: min-content 1fr;
         @include details-hor;
+
+        @media (max-width: 768px) {
+            margin: 4px;
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
     }
 
     header select {
         margin-top: -2px;
         height: 20px;
+
+        @media (max-width: 768px) {
+            margin-top: 0;
+            height: 32px;
+            font-size: 16px;
+        }
     }
 
     > section {
         background-color: rgba(0, 0, 0, 0.01);
         flex: 1 1 auto;
+
+        @media (max-width: 768px) {
+            padding: 4px;
+        }
     }
 }
