@@ -22,7 +22,7 @@ export class HMBeastActorSheet extends HMActorSheet {
         return data;
     }
 
-    _HMprepareSheet(sheetData) {
+    static _HMprepareSheet(sheetData) {
         const actorData = sheetData.actor;
 
         // Saves

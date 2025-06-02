@@ -2,8 +2,8 @@
     "id": "hackmaster5e",
     "title": "Hackmaster",
     "description": "Implementation of Hackmaster for FoundryVTT.",
-    "url": null,
-    "version": null,
+    "url": "https://github.com/freelinhummel/hackmaster5e-fvtt",
+    "version": "1.0.0",
     "compatibility": {
         "minimum": "12",
         "verified": "12"
@@ -63,7 +63,7 @@
     "initiative": "@bonus.total.init",
     "primaryTokenAttribute": "hp",
     "flags": { "allowBugReporter": true },
-    "bugs": "https://github.com/n0q/hackmaster5e-fvtt/issues",
-    "manifest": null,
-    "download": null
+    "bugs": "https://github.com/freelinhummel/hackmaster5e-fvtt/issues",
+    "manifest": "https://github.com/freelinhummel/hackmaster5e-fvtt/releases/latest/download/system.json",
+    "download": "https://github.com/freelinhummel/hackmaster5e-fvtt/releases/latest/download/hackmaster5e.zip"
 }

@@ -74,8 +74,8 @@ function getSpecialMoveFlavor(resp) {
 async function createFumbleCard(dataset) {
     const {roll, resp} = dataset;
 
-    const template = 'systems/hackmaster5e/templates/chat/fumble.hbs';
-    const resultContent = await renderTemplate(template, {resp});
+    const fumbleTemplate = 'systems/hackmaster5e/templates/chat/fumble.hbs';
+    const resultContent = await renderTemplate(fumbleTemplate, {resp});
 
     const typeStr = resp.type ? 'HM.chatCard.rfumble' : 'HM.chatCard.mfumble';
     let flavor = game.i18n.localize(typeStr);
@@ -87,8 +87,8 @@ async function createFumbleCard(dataset) {
         rollContent += await resp.compRoll.render({flavor: compFlavor});
     }
 
-    const content = resultContent + rollContent;
-    return {content, roll};
+    const fumbleContent = resultContent + rollContent;
+    return {content: fumbleContent, roll};
 }
 
 async function createAttackCard(dataset) {
@@ -97,9 +97,11 @@ async function createAttackCard(dataset) {
     if (resp?.button === 'declare') {
         const {SPECIAL} = HMCONST;
         const specialFlavor = getSpecialMoveFlavor(resp);
-        const template = 'systems/hackmaster5e/templates/chat/declare.hbs';
-        const content = await renderTemplate(template, {context, resp, specialFlavor, SPECIAL});
-        return {content, flavor: caller.name};
+        const attackTemplate = 'systems/hackmaster5e/templates/chat/declare.hbs';
+        const attackContent = await renderTemplate(attackTemplate, {
+            context, resp, specialFlavor, SPECIAL,
+        });
+        return {content: attackContent, flavor: caller.name};
     }
 
     let flavor = context.system.ranged.checked

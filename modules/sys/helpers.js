@@ -85,17 +85,17 @@ export const registerHandlebarsHelpers = () => {
     Handlebars.registerHelper('isGM', () => game.user.isGM);
     Handlebars.registerHelper('getFlag', (scope, key, opts) => opts.data.root.actor.getFlag(scope, key));
     Handlebars.registerHelper('getSetting', (scope, key) => game.settings.get(scope, key));
-    Handlebars.registerHelper('eq', (a, b) => a == b);
-    Handlebars.registerHelper('neq', (a, b) => a != b);
+    Handlebars.registerHelper('eq', (a, b) => a === b);
+    Handlebars.registerHelper('neq', (a, b) => a !== b);
     Handlebars.registerHelper('ceil', (a) => Math.ceil(a));
 
     Handlebars.registerHelper('isEven', (a) => (((a % 2) + 2) % 2));
 
-    Handlebars.registerHelper('isHalf', (a, b, opts) => {
-        return opts.hash.ceil
+    Handlebars.registerHelper('isHalf', (a, b, opts) => (
+        opts.hash.ceil
             ? a === Math.ceil(b/2)
-            : a === Math.floor(b/2);
-    });
+            : a === Math.floor(b/2)
+    ));
 
     Handlebars.registerHelper('pad', (arg1) => {
         let num = (arg1 || 0).toString();
@@ -125,8 +125,8 @@ export const registerHandlebarsHelpers = () => {
         let sortedKeys = Object.keys(obj2).sort((a, b) => obj2[a][key] - obj2[b][key]);
         if (!!opts.hash.reverse) sortedKeys = sortedKeys.reverse();
 
-        let sortedObj = {};
-        sortedKeys.forEach((k) => sortedObj[k] = obj1[k]);
+        const sortedObj = {};
+        sortedKeys.forEach((k) => { sortedObj[k] = obj1[k]; });
         return sortedObj;
     });
 

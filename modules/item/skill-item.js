@@ -20,9 +20,9 @@ export class HMSkillItem extends HMItem {
             // TODO: Fix this properly.
             if (universal && !bonus.mastery.value && abilities) {
                 const stack = [];
-                for (const key in relevant) {
+                Object.keys(relevant).forEach((key) => {
                     if (relevant[key]) stack.push(abilities[key].value);
-                }
+                });
                 const value = Math.min(...stack);
                 bonus.stats = {value, 'literacy': value, 'verbal': value};
             } else { delete bonus.stats; }
