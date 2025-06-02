@@ -1,9 +1,17 @@
-$actor-gridgap-h: 4px;
-$actor-gridgap-v: 2px;
-$actor-portrait-dim: 130px;
-$actor-saves-dim: 150px;
-$actor-wounds-dim: 180px;
-$actor-logo-dim: 40%;
+$actor-gridgap-h: 3px;
+$actor-gridgap-v: 3px;
+$actor-portrait-dim: 100px;
+$actor-saves-dim: 140px;
+$actor-wounds-dim: 160px;
+$actor-logo-dim: 30%;
+
+// Modern color scheme
+$modern-primary: #2c3e50;
+$modern-secondary: #34495e;
+$modern-accent: #3498db;
+$modern-light: #ecf0f1;
+$modern-border: #bdc3c7;
+$modern-shadow: rgba(0, 0, 0, 0.1);
 
 // Mobile breakpoints
 $mobile-breakpoint: 768px;
@@ -12,10 +20,14 @@ $small-mobile-breakpoint: 480px;
 #beast-sheet {
     width: $beast-width;
     max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px $modern-shadow;
 
     @media (max-width: $mobile-breakpoint) {
         width: 100%;
         min-width: 320px;
+        margin: 8px;
+        border-radius: 6px;
     }
 
     .sheet-middle {
@@ -37,7 +49,8 @@ $small-mobile-breakpoint: 480px;
     >header {
         .header-stats {
             .logo-corner {
-                top: 25%;
+                top: 20%;
+                opacity: 0.7;
                 
                 @media (max-width: $mobile-breakpoint) {
                     display: none;
@@ -52,50 +65,63 @@ $small-mobile-breakpoint: 480px;
     width: $character-width;
     max-width: 100%;
     grid-gap: $actor-gridgap-v $actor-gridgap-h;
-    grid-template-rows: repeat(3, min-content) 1fr;
+    grid-template-rows: auto auto auto 1fr;
     overflow: hidden;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px $modern-shadow;
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
 
     @media (max-width: $mobile-breakpoint) {
         width: 100%;
         min-width: 320px;
         grid-gap: $padding-sm;
         overflow: visible;
+        margin: 8px;
+        border-radius: 6px;
     }
 
     >.sheet-body.scrollable {
         padding-right: 0;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 0 0 6px 6px;
     }
 
     >header {
         display: grid;
         grid-template-columns: 1fr $actor-logo-dim;
-        column-gap: $padding-md;
-        padding-bottom: 0;
-        border-bottom: 1px solid #AAA;
-        margin-bottom: $padding-sm;
+        column-gap: $padding-sm;
+        padding: $padding-md;
+        background: linear-gradient(135deg, $modern-primary 0%, $modern-secondary 100%);
+        color: white;
+        border-radius: 8px 8px 0 0;
+        margin-bottom: 0;
+        border-bottom: none;
 
         @media (max-width: $mobile-breakpoint) {
             grid-template-columns: 1fr;
             grid-template-rows: auto auto;
             gap: $padding-sm;
+            padding: $padding-sm;
+            border-radius: 6px 6px 0 0;
         }
 
         .header-portrait {
-            font-size: 1.25em;
+            font-size: 1.1em;
             
             @media (max-width: $mobile-breakpoint) {
                 display: flex;
                 align-items: center;
-                font-size: 1rem;
+                font-size: 0.95rem;
                 
                 img {
-                    width: 80px;
-                    height: 80px;
+                    width: 70px;
+                    height: 70px;
                     margin-right: $padding-sm;
                 }
                 
                 .name {
-                    font-size: 1.2rem;
+                    font-size: 1.1rem;
                 }
             }
             
@@ -105,37 +131,50 @@ $small-mobile-breakpoint: 480px;
                 
                 img {
                     margin-right: 0;
-                    margin-bottom: $padding-sm;
+                    margin-bottom: $padding-xs;
                 }
             }
             
             img {
-                border: $card_border solid black;
+                border: 2px solid rgba(255, 255, 255, 0.8);
+                border-radius: 6px;
                 flex: 0 0 $actor-portrait-dim;
                 max-width: $actor-portrait-dim;
                 max-height: $actor-portrait-dim;
                 object-fit: cover;
                 object-position: 50% 0;
-                margin-right: $padding-md;
+                margin-right: $padding-sm;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
             }
 
             .name {
                 width: 100%; 
-                font-size: 1.5rem;
+                font-size: 1.3rem;
+                font-weight: 600;
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                border-radius: 4px;
+                padding: 4px 8px;
+                color: white;
+
+                &::placeholder {
+                    color: rgba(255, 255, 255, 0.7);
+                }
             }
         }
 
         .header-stats {
             display: grid;
             grid-template-rows: repeat(2, 1fr);
-            grid-template-columns: repeat(5, minmax(0, 1fr));
+            grid-template-columns: repeat(4, minmax(0, 1fr));
             grid-auto-flow: row dense;
             position: relative;
+            gap: 4px;
 
             @media (max-width: $mobile-breakpoint) {
                 grid-template-columns: repeat(3, 1fr);
                 grid-template-rows: repeat(3, 1fr);
-                gap: 2px;
+                gap: 3px;
             }
 
             @media (max-width: $small-mobile-breakpoint) {
@@ -145,11 +184,12 @@ $small-mobile-breakpoint: 480px;
 
             img {
                 grid-column-start: 1;
-                grid-column-end: span 5;
-                mix-blend-mode: multiply;
+                grid-column-end: span 4;
+                mix-blend-mode: soft-light;
                 border: unset;
                 height: auto;
                 padding: 0;
+                opacity: 0.6;
                 
                 @media (max-width: $mobile-breakpoint) {
                     display: none;
@@ -158,12 +198,44 @@ $small-mobile-breakpoint: 480px;
 
             .logo-corner {
                 position: absolute;
-                top: 48px;
-                right: 0px;
-                font-size: 8px;
+                top: 40px;
+                right: 4px;
+                font-size: 7px;
+                color: rgba(255, 255, 255, 0.8);
                 
                 @media (max-width: $mobile-breakpoint) {
                     display: none;
+                }
+            }
+
+            figure {
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 4px;
+                padding: 4px;
+                backdrop-filter: blur(10px);
+
+                &.fraction {
+                    .divisor {
+                        background: rgba(255, 255, 255, 0.8);
+                    }
+                }
+
+                .resource-label {
+                    color: rgba(255, 255, 255, 0.9);
+                    font-weight: 500;
+                    font-size: 0.8rem;
+                }
+
+                input, label {
+                    color: white;
+                    font-weight: 600;
+                }
+
+                input {
+                    background: rgba(255, 255, 255, 0.1);
+                    border: 1px solid rgba(255, 255, 255, 0.3);
+                    border-radius: 3px;
                 }
             }
         }
@@ -174,10 +246,11 @@ $small-mobile-breakpoint: 480px;
     display: grid;
     grid-gap: $actor-gridgap-h;
     width: inherit;
-    padding-right: $padding-sm;
+    padding: 0 $padding-sm $padding-sm $padding-sm;
     grid-template-columns: $actor-portrait-dim $actor-saves-dim 1fr $actor-saves-dim $actor-wounds-dim;
     grid-template-areas:
         "abilities middle-saves-l middle-stats middle-saves-r middle-wounds";
+    background: rgba(255, 255, 255, 0.5);
 
     @media (max-width: $mobile-breakpoint) {
         grid-template-columns: 1fr;
@@ -188,18 +261,22 @@ $small-mobile-breakpoint: 480px;
             "middle-saves-r"
             "middle-wounds";
         gap: $padding-sm;
-        padding-right: $padding-sm;
+        padding: $padding-sm;
     }
 
     .middle-wounds {
-        margin-top: 3px;
-        border-left: 2px solid $c-grey;
+        margin-top: 0;
+        border-left: 2px solid $modern-border;
+        border-radius: 0 6px 6px 0;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 6px;
 
         @media (max-width: $mobile-breakpoint) {
             border-left: none;
-            border-top: 2px solid $c-grey;
+            border-top: 2px solid $modern-border;
+            border-radius: 6px;
             margin-top: 0;
-            padding-top: $padding-sm;
+            padding: $padding-sm;
         }
 
         @include table-basic;
@@ -215,25 +292,27 @@ $small-mobile-breakpoint: 480px;
             tbody tr:first-child td {
                 position: sticky;
                 top: 0;
-                background: #d2d0c4;
+                background: $modern-light;
                 z-index: 10;
+                border-radius: 4px 4px 0 0;
             }
             td {
                 text-align: right;
-                padding-right: 5px;
-                width: 3em;
+                padding: 2px 4px;
+                width: 2.5em;
                 overflow: hidden;
                 white-space: nowrap;
+                border: 1px solid rgba(255, 255, 255, 0.5);
                 
                 @media (max-width: $mobile-breakpoint) {
                     width: auto;
                     white-space: normal;
-                    padding: 2px 5px;
+                    padding: 4px 6px;
                 }
                 
-                &:nth-child(1) { width: 3em; }
-                &:nth-child(2) { width: 3em; }
-                &:nth-child(3) { width: 2em; }
+                &:nth-child(1) { width: 2.5em; }
+                &:nth-child(2) { width: 2.5em; }
+                &:nth-child(3) { width: 1.8em; }
                 &:nth-child(4) {
                     text-align: left;
                     width: auto;
@@ -251,11 +330,12 @@ $small-mobile-breakpoint: 480px;
         }
 
         >section {
-            height: 11rem;
+            height: 10rem;
+            border-radius: 4px;
             
             @media (max-width: $mobile-breakpoint) {
                 height: auto;
-                max-height: 15rem;
+                max-height: 12rem;
                 overflow-y: auto;
             }
         }
@@ -264,18 +344,54 @@ $small-mobile-breakpoint: 480px;
     .middle-stats {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 6px;
         
         @media (max-width: $small-mobile-breakpoint) {
             grid-template-columns: 1fr;
-            grid-template-rows: repeat(8, auto);
+            grid-template-rows: repeat(6, auto);
             gap: $padding-sm;
+        }
+
+        figure {
+            background: white;
+            border: 1px solid $modern-border;
+            border-radius: 6px;
+            padding: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: all 0.2s ease;
+
+            &:hover {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                transform: translateY(-1px);
+            }
+
+            .resource-label {
+                color: $modern-secondary;
+                font-weight: 600;
+                font-size: 0.85rem;
+            }
+
+            input {
+                background: rgba(52, 73, 94, 0.05);
+                border: 1px solid $modern-border;
+                border-radius: 3px;
+                padding: 2px 4px;
+                transition: border-color 0.2s ease;
+
+                &:focus {
+                    border-color: $modern-accent;
+                    outline: none;
+                    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+                }
+            }
         }
     }
 
     .abilities {
         display: flex;
         flex-direction: column;
+        gap: 4px;
         
         @media (max-width: $mobile-breakpoint) {
             flex-direction: row;
@@ -290,14 +406,24 @@ $small-mobile-breakpoint: 480px;
 
     .ability {
         display: grid;
-        grid-template-columns: 60% 40%;
-        align-items: end;
-        column-gap: 10px;
+        grid-template-columns: auto auto;
+        align-items: center;
+        column-gap: 8px;
+        background: white;
+        border: 1px solid $modern-border;
+        border-radius: 6px;
+        padding: 6px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        transition: all 0.2s ease;
+
+        &:hover {
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(-1px);
+        }
         
         @media (max-width: $mobile-breakpoint) {
-            grid-template-columns: auto auto;
             flex: 1 1 calc(50% - 5px);
-            min-width: 120px;
+            min-width: 100px;
         }
         
         @media (max-width: $small-mobile-breakpoint) {
@@ -307,7 +433,9 @@ $small-mobile-breakpoint: 480px;
         
         >span {
             text-align: end;
-            font-size: $font-lg;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: $modern-primary;
             
             @media (max-width: $mobile-breakpoint) {
                 font-size: 1rem;
@@ -316,23 +444,113 @@ $small-mobile-breakpoint: 480px;
 
         >label {
             text-align: start;
-            padding-bottom: 2px;
+            color: $modern-secondary;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    }
+
+    .middle-saves {
+        .cards-list {
+            gap: 4px;
+            
+            .card {
+                background: white;
+                border: 1px solid $modern-border;
+                border-radius: 6px;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+                transition: all 0.2s ease;
+                margin: 2px 0;
+
+                &:hover {
+                    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+                    transform: translateY(-1px);
+                }
+
+                summary {
+                    padding: 8px;
+                    border-radius: 6px;
+                }
+
+                .rollable {
+                    background: $modern-accent;
+                    color: white;
+                    border-radius: 4px;
+                    padding: 4px 8px;
+                    font-weight: 600;
+                    transition: background-color 0.2s ease;
+
+                    &:hover {
+                        background: darken($modern-accent, 10%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Modern tabs styling
+.sheet-tabs {
+    border-bottom: 2px solid $modern-border;
+    background: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    padding: 0 $padding-sm;
+
+    .item {
+        background: transparent;
+        border: none;
+        color: $modern-secondary;
+        font-weight: 600;
+        padding: 12px 16px;
+        border-radius: 6px 6px 0 0;
+        margin-right: 2px;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background: rgba(52, 152, 219, 0.1);
+            color: $modern-accent;
+        }
+
+        &.active {
+            background: $modern-accent;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
     }
 }
 
 .base-setup {
+    padding: $padding-sm;
+    
     input {
-        width: 2em;
+        width: 3em;
+        background: white;
+        border: 1px solid $modern-border;
+        border-radius: 3px;
+        padding: 2px 4px;
         
         @media (max-width: $mobile-breakpoint) {
-            min-width: 2em;
+            min-width: 2.5em;
             width: auto;
+            min-height: 32px;
+            font-size: 16px;
+            padding: 4px;
+        }
+
+        &:focus {
+            border-color: $modern-accent;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
         }
     }
 
     .setup-abilities {
         @include table-basic;
+        background: white;
+        border-radius: 6px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         
         @media (max-width: $mobile-breakpoint) {
             overflow-x: auto;
@@ -342,6 +560,7 @@ $small-mobile-breakpoint: 480px;
     .statbonuses {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+        gap: $padding-sm;
         
         @media (max-width: $small-mobile-breakpoint) {
             grid-template-columns: 1fr;
@@ -351,6 +570,7 @@ $small-mobile-breakpoint: 480px;
 
 .base-combat {
     @include flexgrid;
+    padding: $padding-sm;
     
     @media (max-width: $mobile-breakpoint) {
         .row {
@@ -363,45 +583,141 @@ $small-mobile-breakpoint: 480px;
     height: auto;
     min-height: 0;
     overflow-y: auto;
-    padding-right: 1.5%;
+    padding-right: 8px;
     
     @media (max-width: $mobile-breakpoint) {
         padding-right: 0;
         max-height: 70vh;
     }
+
+    // Custom scrollbar
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $modern-border;
+        border-radius: 3px;
+
+        &:hover {
+            background: $modern-secondary;
+        }
+    }
 }
 
-// Touch-friendly improvements for mobile
+// Enhanced touch-friendly improvements for mobile
 @media (max-width: $mobile-breakpoint) {
     .button, .imgbutton, .rollable {
         min-height: 44px;
         min-width: 44px;
         padding: 8px;
         touch-action: manipulation;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+
+        &:active {
+            transform: scale(0.95);
+        }
     }
     
     input[type="text"], input[type="number"] {
         min-height: 32px;
-        font-size: 16px; // Prevents zoom on iOS
-        padding: 4px;
+        font-size: 16px;
+        padding: 6px 8px;
+        border-radius: 4px;
+        border: 1px solid $modern-border;
+
+        &:focus {
+            border-color: $modern-accent;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
     }
     
     select {
         min-height: 32px;
         font-size: 16px;
-        padding: 4px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        border: 1px solid $modern-border;
+        background: white;
     }
     
     .card {
-        margin: 6px 3px; // Larger margins for easier touch targets
+        margin: 8px 4px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
     
     .card header {
-        padding: 8px;
+        padding: 12px;
     }
     
     .tabs .item {
-        padding: 12px 8px;
+        padding: 14px 10px;
         font-size: 14px;
+        border-radius: 8px 8px 0 0;
+    }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+    .actor-sheet {
+        background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+        color: #e0e0e0;
+
+        >header {
+            background: linear-gradient(135deg, #0f1419 0%, #1e2328 100%);
+        }
+
+        .sheet-middle {
+            background: rgba(30, 30, 30, 0.8);
+
+            .middle-stats figure,
+            .ability,
+            .middle-saves .card {
+                background: #2d2d2d;
+                border-color: #444;
+                color: #e0e0e0;
+            }
+
+            .middle-wounds {
+                background: rgba(45, 45, 45, 0.9);
+                border-color: #444;
+            }
+        }
+
+        .sheet-tabs {
+            background: rgba(45, 45, 45, 0.9);
+
+            .item {
+                color: #b0b0b0;
+
+                &:hover {
+                    background: rgba(52, 152, 219, 0.2);
+                    color: $modern-accent;
+                }
+
+                &.active {
+                    background: $modern-accent;
+                    color: white;
+                }
+            }
+        }
+
+        input, select {
+            background: #2d2d2d;
+            border-color: #444;
+            color: #e0e0e0;
+
+            &:focus {
+                border-color: $modern-accent;
+            }
+        }
     }
 }

@@ -1,15 +1,150 @@
 .tabs {
-    height: 25px;
-    border-top: 1px solid #AAA;
-    border-bottom: 1px solid #AAA;
+    border-bottom: 2px solid $modern-border;
+    background: rgba(255, 255, 255, 0.95);
+    margin: 0;
+    padding: 0 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
 
     .item {
-        line-height: 10px;
-        font-weight: bold;
+        background: transparent;
+        border: none;
+        color: $modern-secondary;
+        font-weight: 600;
+        padding: 10px 14px;
+        border-radius: 6px 6px 0 0;
+        margin: 0;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        position: relative;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+
+        &:hover {
+            background: rgba(52, 152, 219, 0.1);
+            color: $modern-accent;
+            transform: translateY(-1px);
+        }
+
+        &.active {
+            background: $modern-accent;
+            color: white;
+            box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: $modern-accent;
+            }
+        }
+
+        @media (max-width: 768px) {
+            padding: 12px 10px;
+            font-size: 0.8rem;
+            flex: 1 1 auto;
+            text-align: center;
+            min-width: 0;
+        }
+    }
+}
+
+// Bio tabs specific styling
+.bio-tabs {
+    background: rgba(248, 249, 250, 0.9);
+    border-bottom: 1px solid $modern-border;
+
+    .item {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+
+        @media (max-width: 768px) {
+            padding: 10px 8px;
+            font-size: 0.75rem;
+        }
+    }
+}
+
+// Sheet tabs container
+.sheet-tabs {
+    border-bottom: 2px solid $modern-border;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%);
+    margin: 0;
+    padding: 0 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    @media (max-width: 768px) {
+        padding: 0 8px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+
+        .item {
+            display: inline-block;
+            flex: none;
+            min-width: auto;
+        }
+    }
+}
+
+// Tab content
+.tab {
+    display: none;
+
+    &.active {
+        display: block;
+    }
+}
+
+// Bio body styling
+.bio-body {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 0 0 6px 6px;
+    min-height: 20rem;
+
+    .tab {
+        padding: 12px;
+        min-height: 18rem;
+
+        @media (max-width: 768px) {
+            padding: 8px;
+            min-height: 15rem;
+        }
+    }
+}
+
+// Dark mode for tabs
+@media (prefers-color-scheme: dark) {
+    .tabs, .sheet-tabs {
+        background: rgba(45, 45, 45, 0.95);
+        border-bottom-color: #444;
+
+        .item {
+            color: #b0b0b0;
+
+            &:hover {
+                background: rgba(52, 152, 219, 0.2);
+                color: $modern-accent;
+            }
+
+            &.active {
+                background: $modern-accent;
+                color: white;
+            }
+        }
     }
 
-    .item.active {
-        text-decoration: underline;
-        text-shadow: none;
+    .bio-tabs {
+        background: rgba(30, 30, 30, 0.9);
+        border-bottom-color: #444;
+    }
+
+    .bio-body {
+        background: rgba(30, 30, 30, 0.8);
     }
 }
