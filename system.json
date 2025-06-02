@@ -65,5 +65,5 @@
     "flags": { "allowBugReporter": true },
     "bugs": "https://github.com/freelinhummel/hackmaster5e-fvtt/issues",
     "manifest": "https://github.com/freelinhummel/hackmaster5e-fvtt/releases/latest/download/system.json",
-    "download": "https://github.com/freelinhummel/hackmaster5e-fvtt/releases/latest/download/hackmaster5e.zip"
+    "download": "https://github.com/freelinhummel/hackmaster5e-fvtt/releases/latest/download/system.zip"
 }
